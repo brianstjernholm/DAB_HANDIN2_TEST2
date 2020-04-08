@@ -176,26 +176,26 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
 
         // GET: find request by student name
-        public async Task<IActionResult> FindRequests(string name)
-        {
-            if (name == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> FindRequests(string name)
+        //{
+        //    if (name == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var student = _context.Students.Where(s => s.Name == name).FirstOrDefault();
+        //    var student = _context.Students.Where(s => s.Name == name).FirstOrDefault();
 
-            var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
+        //    var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
 
-            if (student == null)
-            {
-                return NotFound();
-            }
+        //    if (student == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId");
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
-            return View();
+        //    ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId");
+        //    ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
+        //    return View();
             //return View(helprequests);
-        }
+        //}
     }
 }

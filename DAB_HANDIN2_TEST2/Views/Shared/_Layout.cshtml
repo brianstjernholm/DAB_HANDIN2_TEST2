@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using DAB_HANDIN2_TEST2.Controllers
+@using DAB2.models
+@using DAB2.data
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -33,9 +39,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Helprequests" asp-action="Index">Help Requests</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Helprequests" asp-action="FindRequests">Find Requests</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +50,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - DAB_HANDIN2_TEST2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
