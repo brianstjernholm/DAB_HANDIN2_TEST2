@@ -26,6 +26,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             return View(await dBcontext.ToListAsync());
         }
 
+
         // GET: Helprequests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,6 +43,15 @@ namespace DAB_HANDIN2_TEST2.Controllers
             {
                 return NotFound();
             }
+
+
+
+
+            var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
+            ViewData["name"] = student.Name.ToString();
+
+
+
 
             return View(helprequest);
         }
@@ -61,9 +71,9 @@ namespace DAB_HANDIN2_TEST2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
         {
+            //var helprequest2 = _context.Helprequests.Where(h => h.HelprequestId == helprequest.HelprequestId).FirstOrDefault();
             var student = _context.Students.Where(s => s.StudentId == helprequest.StudentId).FirstOrDefault();
-            var assignment = _context.Assignments.Where(a => a.AssignmentId == helprequest.AssignmentId)
-                .FirstOrDefault();
+            var assignment = _context.Assignments.Where(a => a.AssignmentId == helprequest.AssignmentId).FirstOrDefault();
 
             var request = new Helprequest()
             {

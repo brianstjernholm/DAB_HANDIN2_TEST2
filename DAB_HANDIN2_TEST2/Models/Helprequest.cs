@@ -10,12 +10,14 @@ namespace DAB2.models
     {
         // DEFINE SELF
         [Key]
+        [Display(Name = "Helprequest ID")]
         public int HelprequestId { get; set; } //Key
 
         // RELATIONS
         public int StudentId { get; set; }
         public Student Student { get; set; }
 
+        [Display(Name = "Assignment ID")]
         public int AssignmentId { get; set; }
         public virtual Assignment Assignment { get; set; }
     }

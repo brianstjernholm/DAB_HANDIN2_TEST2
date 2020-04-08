@@ -25,6 +25,20 @@ namespace DAB_HANDIN2_TEST2.Controllers
             return View(await _context.Students.ToListAsync());
         }
 
+
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    //var users = from u in _context.User select u;
+        //    var students = from u in _context.Students select u;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        students = students.Where(u => u.Name.Contains(searchString));
+        //    }
+
+        //    return View(await students.ToListAsync());
+        //}
+
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -164,7 +178,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
             var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
             //var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
-            
+
             ViewData["name"] = student.Name.ToString();
             return View(helprequests);
         }

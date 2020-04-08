@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.AssignmentId)
             </td>
             <td>
-                <a asp-controller="Helprequests" asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
-                @Html.ActionLink("Details", "Details", new { id = item.HelprequestId }) |
-                @Html.ActionLink("Delete", "Details", new { id = item.HelprequestId }) |
+                <a asp-controller="Helprequests" asp-action="Edit" asp-route-id="@item.HelprequestId">Edit</a> |
+                <a asp-controller="Helprequests" asp-action="Details" asp-route-id="@item.HelprequestId">Details</a> |
+                <a asp-controller="Helprequests" asp-action="Delete" asp-route-id="@item.HelprequestId">Delete</a> 
             </td>
         </tr>
 }

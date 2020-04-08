@@ -10,6 +10,7 @@ namespace DAB2.models
     {
         // DEFINE SELF
         [Key]
+        [Display(Name = "Assignment ID")]
         public int AssignmentId { get; set; }   //Key
 
         // RELATIONS
