@@ -218,73 +218,73 @@ namespace DAB2.data
 
                 #region exercises
 
-                //////Creating exercises
-                //Exercise ex1 = new Exercise()
-                //{
-                //    Lecture = "L1",
-                //    Number = 1,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Student = student1,
-                //    Teacher = teacher1,
-                //    Course = DAB
-                //};
+                //Creating exercises
+                Exercise ex1 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 1,
+                    HelpWhere = "Nygaard kælderen",
+                    Student = student1,
+                    Teacher = teacher1,
+                    Course = DAB
+                };
 
-                //Exercise ex2 = new Exercise()
-                //{
-                //    Lecture = "L1",
-                //    Number = 2,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Student = student2,
-                //    Course = NGK,
-                //    Teacher = teacher5
-                //};
+                Exercise ex2 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 2,
+                    HelpWhere = "Nygaard kælderen",
+                    Student = student2,
+                    Course = NGK,
+                    Teacher = teacher5
+                };
 
-                //Exercise ex3 = new Exercise()
-                //{
-                //    Lecture = "L1",
-                //    Number = 1,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Student = student3,
-                //    Course = SWD,
-                //    Teacher = teacher3
-                //};
+                Exercise ex3 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 3,
+                    HelpWhere = "Nygaard kælderen",
+                    Student = student3,
+                    Course = SWD,
+                    Teacher = teacher3
+                };
 
-                //Exercise ex4 = new Exercise()
-                //{
-                //    Lecture = "L1",
-                //    Number = 1,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Student = student3,
-                //    Course = SWT,
-                //    Teacher = teacher4
-                //};
+                Exercise ex4 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 4,
+                    HelpWhere = "Nygaard kælderen",
+                    Student = student3,
+                    Course = SWT,
+                    Teacher = teacher4
+                };
 
-                //Exercise ex5 = new Exercise()
-                //{
-                //    Lecture = "2",
-                //    Number = 1,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Course = DAB,
-                //    Teacher = teacher1,
-                //    Student = student4
-                //};
+                Exercise ex5 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 5,
+                    HelpWhere = "Nygaard kælderen",
+                    Course = DAB,
+                    Teacher = teacher1,
+                    Student = student4
+                };
 
-                //Exercise ex6 = new Exercise()
-                //{
-                //    Lecture = "1",
-                //    Number = 1,
-                //    HelpWhere = "Nygaard kælderen",
-                //    Course = GUI,
-                //    Teacher = teacher2,
-                //    Student = student4
-                //};
+                Exercise ex6 = new Exercise()
+                {
+                    Lecture = "L1",
+                    Number = 6,
+                    HelpWhere = "Nygaard kælderen",
+                    Course = GUI,
+                    Teacher = teacher2,
+                    Student = student4
+                };
 
-                //context.Exercises.Add(ex1);
-                //context.Exercises.Add(ex2);
-                //context.Exercises.Add(ex3);
-                //context.Exercises.Add(ex4);
-                //context.Exercises.Add(ex5);
-                //context.Exercises.Add(ex6);
+                context.Exercises.Add(ex1);
+                context.Exercises.Add(ex2);
+                context.Exercises.Add(ex3);
+                context.Exercises.Add(ex4);
+                context.Exercises.Add(ex5);
+                context.Exercises.Add(ex6);
 
                 #endregion
 

@@ -69,7 +69,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
+        public async Task<IActionResult> Create([Bind("HelprequestId,StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
         {
             //var helprequest2 = _context.Helprequests.Where(h => h.HelprequestId == helprequest.HelprequestId).FirstOrDefault();
             var student = _context.Students.Where(s => s.StudentId == helprequest.StudentId).FirstOrDefault();
@@ -89,6 +89,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             }
             ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId", helprequest.AssignmentId);
             ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", helprequest.StudentId);
+            ViewData["HelprequestId"] = new SelectList(_context.Helprequests, "HelprequestId", "HelprequestId", helprequest.HelprequestId);
             return View(helprequest);
         }
 
@@ -159,7 +160,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             var helprequest = await _context.Helprequests
                 .Include(h => h.Assignment)
                 .Include(h => h.Student)
-                .FirstOrDefaultAsync(m => m.AssignmentId == id);
+                .FirstOrDefaultAsync(m => m.HelprequestId == id);
             if (helprequest == null)
             {
                 return NotFound();
