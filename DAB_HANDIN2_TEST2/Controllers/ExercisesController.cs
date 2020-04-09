@@ -155,25 +155,28 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
 
 
-        //public async Task<IActionResult> query(int? teacherId, int? courseId)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> query(int? teacherId, int? courseId)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-        //    var exercise = await _context.Exercises
-        //        .Include(e => e.Course)
-        //        .Include(e => e.Student)
-        //        .Include(e => e.Teacher)
-        //        .FirstOrDefaultAsync(m => m.Number == id);
-        //    if (exercise == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var query1 = _context.Courses.Where(c => c.CourseId == courseId).ToList();
+            var query2 = query1.Where(teacherId == teacherId)
 
-        //    return View(exercise);
-        //}
+            await _context.Exercises
+                .Include(q => q.)
+                .Include(q => q.Student)
+                .Include(q => q.Teacher)
+                .FirstOrDefaultAsync(m => m.Number == id);
+            if (exercise == null)
+            {
+                return NotFound();
+            }
+
+            return View(exercise);
+        }
 
         // POST: Exercises/Delete/5
         [HttpPost, ActionName("Delete")]
