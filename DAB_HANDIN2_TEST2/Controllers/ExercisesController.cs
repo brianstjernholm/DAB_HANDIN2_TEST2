@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -153,8 +154,6 @@ namespace DAB_HANDIN2_TEST2.Controllers
             return View(exercise);
         }
 
-
-
         public async Task<IActionResult> query(int? teacherId, int? courseId)
         {
             //if (id == null)
@@ -162,20 +161,18 @@ namespace DAB_HANDIN2_TEST2.Controllers
             //    return NotFound();
             //}
 
-            var query1 = _context.Courses.Where(c => c.CourseId == courseId).ToList();
-            var query2 = query1.Where(teacherId == teacherId)
+            //var query3 = _context.Exercises.Where(e => e.CourseId == courseId).Where(e => e.TeacherId == teacherId).Select(x => x.HelpWhere).ToList();
+            //ViewData["list"] = query3;
 
-            await _context.Exercises
-                .Include(q => q.)
-                .Include(q => q.Student)
-                .Include(q => q.Teacher)
-                .FirstOrDefaultAsync(m => m.Number == id);
-            if (exercise == null)
-            {
-                return NotFound();
-            }
 
-            return View(exercise);
+            var query3 = _context.Exercises.Where(e => e.CourseId == courseId).Where(e => e.TeacherId == teacherId).ToList();
+
+            //if (exercise == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return View(query3);
         }
 
         // POST: Exercises/Delete/5
