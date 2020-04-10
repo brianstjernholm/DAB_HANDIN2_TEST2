@@ -24,13 +24,13 @@
                 @Html.DisplayNameFor(model => model.HelpWhere)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Teacher)
+                @Html.DisplayNameFor(model => model.Teacher.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student)
+                @Html.DisplayNameFor(model => model.Student.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course)
+                @Html.DisplayNameFor(model => model.Course.Name)
             </th>
             <th></th>
         </tr>
@@ -43,17 +43,17 @@
                     @Html.DisplayFor(modelItem => item.HelpWhere)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Teacher.TeacherId)
+                    @Html.DisplayFor(modelItem => item.Teacher.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Student.StudentId)
+                    @Html.DisplayFor(modelItem => item.Student.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Course.CourseId)
+                    @Html.DisplayFor(modelItem => item.Course.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>

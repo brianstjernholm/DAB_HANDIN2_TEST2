@@ -176,9 +176,10 @@ namespace DAB_HANDIN2_TEST2.Controllers
         {
             var helprequests = _context.Helprequests.Where(h => h.Student.StudentId == id).ToList();
 
-            var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
+
             //var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
 
+            var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
             ViewData["name"] = student.Name.ToString();
             return View(helprequests);
         }
