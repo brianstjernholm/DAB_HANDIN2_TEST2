@@ -20,12 +20,35 @@ namespace DAB_HANDIN2_TEST2.Controllers
             _context = context;
         }
 
-        // GET: Exercises
-        public async Task<IActionResult> Index()
+
+
+        public async Task<IActionResult> Index(string searchString)
         {
-            var dBcontext = _context.Exercises.Include(e => e.Course).Include(e => e.Student).Include(e => e.Teacher);
-            return View(await dBcontext.ToListAsync());
+            //var users = from u in _context.User select u;
+            var users = from u in _context.Exercises select u;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.Teacher.Name.Contains(searchString)).Include(e => e.Course).Include(e => e.Student).Include(e => e.Teacher);
+                //users = users.Include(e => e.Course).Include(e => e.Student).Include(e => e.Teacher);
+            }
+            
+
+            users = users.Include(e => e.Course).Include(e => e.Student).Include(e => e.Teacher);
+
+            return View(await users.ToListAsync());
         }
+
+
+
+        // Gamle index af exercise
+        //public async Task<IActionResult> Index()
+        //{
+        //    var dBcontext = _context.Exercises.Include(e => e.Course).Include(e => e.Student).Include(e => e.Teacher);
+        //    return View(await dBcontext.ToListAsync());
+        //}
+
+
 
         // GET: Exercises/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -174,6 +197,19 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
             return View(query3);
         }
+
+
+        //public async Task<IActionResult> query(int teacherId)
+        //{
+        //    var query = _context.Exercises.Where(e => e.TeacherId == teacherId).ToList();
+        //    var exercises = _context.Exercises.Where(s => s.HelpWhere).FirstOrDefault();
+        //    //var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
+        //    ////var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
+
+        //    //ViewData["name"] = student.Name.ToString();
+        //    return View(query);
+        //}
+
 
         // POST: Exercises/Delete/5
         [HttpPost, ActionName("Delete")]

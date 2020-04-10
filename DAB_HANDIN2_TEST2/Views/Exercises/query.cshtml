@@ -16,15 +16,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.HelpWhere)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher.TeacherId)
+            </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Teacher)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Student)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Course)
             </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseId)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -34,16 +34,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HelpWhere)
             </td>
-            @*<td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Teacher.TeacherId)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Student.StudentId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Course.CourseId)
             </td>
-            <td>
+            @*<td>
                 @ViewData["list"];
             </td>*@
             @*<td>
