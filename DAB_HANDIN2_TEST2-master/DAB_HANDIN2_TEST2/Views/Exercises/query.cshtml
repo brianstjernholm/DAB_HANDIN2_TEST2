@@ -7,9 +7,9 @@
 
 <h1>query</h1>
 
-@*<p>
+<p>
     <a asp-action="Create">Create New</a>
-</p>*@
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -17,13 +17,13 @@
                 @Html.DisplayNameFor(model => model.HelpWhere)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Teacher.Name)
+                @Html.DisplayNameFor(model => model.Teacher.TeacherId)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Student.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Course)
+                @Html.DisplayNameFor(model => model.Course.CourseId)
             </th>
             <th></th>
         </tr>
@@ -35,16 +35,13 @@
                 @Html.DisplayFor(modelItem => item.HelpWhere)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Teacher)
+                @Html.DisplayFor(modelItem => item.Teacher.TeacherId)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Student)
+                @Html.DisplayFor(modelItem => item.Student.StudentId)
             </td>*@
             <td>
-                @ViewData["StudentName"]
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.Name)
+                @Html.DisplayFor(modelItem => item.Course.CourseId)
             </td>
             @*<td>
                 @ViewData["list"];
