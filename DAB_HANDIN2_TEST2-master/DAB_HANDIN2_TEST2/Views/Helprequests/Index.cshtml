@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DAB2.models.Helprequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HelprequestId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HelprequestId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assignment.AssignmentId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.HelprequestId">Edit</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.HelprequestId">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.HelprequestId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+ 
