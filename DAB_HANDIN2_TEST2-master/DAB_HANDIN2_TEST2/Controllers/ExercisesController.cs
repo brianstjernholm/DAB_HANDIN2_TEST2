@@ -199,6 +199,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         }
 
 
+        //public async Task<IActionResult> query(string teacherName, int courseId)
         public async Task<IActionResult> query(string teacherName, int courseId)
         {
             //var exercise = _context.Exercises.Where(e => e.TeacherId == teacherId).ToList();
@@ -209,9 +210,12 @@ namespace DAB_HANDIN2_TEST2.Controllers
             var exercises = _context.Exercises
                 .Where(e => e.Teacher.Name == teacherName)
                 .Where(e => e.CourseId == courseId)
-                .Include(e => e.Student.Name)
+                //.Include(e => e.Student.Name)
+                .Include(e => e.Student)
                 .ToList();
             var students = _context.Students.ToList();
+
+
 
             //ViewBag.Students = new Student[]{};
             //ViewBag.Students = students;
@@ -220,6 +224,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             //ViewData["CourseName"] = _context.Courses.Where(c => c.CourseId == courseId).Include(c => c.Name);
             //ViewData["name"] = student.Name.ToString();
             return View(exercises);
+
         }
 
 
@@ -233,7 +238,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GetExerciseHelpWhere([BindAttribute("Name,CourseId")] Teacher teacher, Course course)
+        public async Task<IActionResult> GetExerciseHelpWhere([BindAttribute("Name,CourseId")] Teacher teacher, Course course, Student student)
         {
             ViewData["Name"] = new SelectList(_context.Teachers, "Name", "Name", teacher.Name);
             ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId", course.CourseId);
@@ -241,8 +246,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             //var teacherQueried = _context.Teachers.Where(t => t.Name == ViewData["Name"]);
             //var coursesQueried = _context.Courses.Where(c => c.CourseId.ToString() == ViewData["CourseId"]);
 
-            var exercise = _context.Exercises.Where(e => e.Teacher.Name == teacher.Name).Where(e => e.CourseId == course.CourseId);
-
+            var exercise = _context.Exercises.Where(e => e.Teacher.Name == teacher.Name).Where(e => e.CourseId == course.CourseId).Include(e => e.Student);
 
             return View("query", exercise);
         }

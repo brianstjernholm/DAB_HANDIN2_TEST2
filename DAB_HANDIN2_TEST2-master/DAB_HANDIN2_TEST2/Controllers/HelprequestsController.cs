@@ -71,15 +71,15 @@ namespace DAB_HANDIN2_TEST2.Controllers
             var student = _context.Students.Where(s => s.StudentId == helprequest.StudentId).FirstOrDefault();
             var assignment = _context.Assignments.Where(a => a.AssignmentId == helprequest.AssignmentId).FirstOrDefault();
 
-            var request = new Helprequest()
-            {
-                Student = student,
-                Assignment = assignment
-            };
+            //var request = new Helprequest()
+            //{
+            //    Student = student,
+            //    Assignment = assignment
+            //};
 
             if (ModelState.IsValid)
             {
-                _context.Update(request);
+                _context.Update(helprequest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -202,14 +202,6 @@ public async Task<IActionResult> Edit(int? id)
             ViewBag.OpenCounter = count;
             return View(await dBcontext.ToListAsync());
         }
-
-
-        //// GET: Helprequests
-        //public async Task<IActionResult> Index()
-        //{
-        //    var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
-        //    return View(await dBcontext.ToListAsync());
-        //}
 
 
         // GET: find request by student name
