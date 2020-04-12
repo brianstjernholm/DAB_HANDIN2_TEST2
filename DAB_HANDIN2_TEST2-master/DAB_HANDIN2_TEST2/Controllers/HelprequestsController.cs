@@ -79,10 +79,11 @@ namespace DAB_HANDIN2_TEST2.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(request);
+                _context.Update(request);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId", helprequest.AssignmentId);
             ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", helprequest.StudentId);
             ViewData["HelprequestId"] = new SelectList(_context.Helprequests, "HelprequestId", "HelprequestId", helprequest.HelprequestId);
@@ -90,8 +91,11 @@ namespace DAB_HANDIN2_TEST2.Controllers
             return View(helprequest);
         }
 
-        // GET: Helprequests/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+
+
+//GET: Helprequests/Edit/5
+public async Task<IActionResult> Edit(int? id)
+
         {
             if (id == null)
             {
@@ -188,6 +192,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         public async Task<IActionResult> getOpenRequests()
         {
             var openRequests = _context.Helprequests.Where(hr => hr.IsOpen == true).ToList();
+            var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
             int count = 0;
             foreach (var helprequest in openRequests)
             {
@@ -195,8 +200,16 @@ namespace DAB_HANDIN2_TEST2.Controllers
             }
 
             ViewBag.OpenCounter = count;
-            return View(openRequests);
+            return View(await dBcontext.ToListAsync());
         }
+
+
+        //// GET: Helprequests
+        //public async Task<IActionResult> Index()
+        //{
+        //    var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
+        //    return View(await dBcontext.ToListAsync());
+        //}
 
 
         // GET: find request by student name
