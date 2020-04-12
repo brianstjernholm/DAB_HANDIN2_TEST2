@@ -1,57 +1,53 @@
 ﻿@model IEnumerable<DAB2.models.Helprequest>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "getOpenRequests";
 }
 
-<h1>Index</h1>
+<h1>getOpenRequests</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
+            <td>
+                <p>
+                    Antal åbne requests:@ViewBag.OpenCounter
+                </p>
+
+            </td>
             <th>
-                @Html.DisplayNameFor(model => model.HelprequestId)
+                @Html.DisplayNameFor(model => model.IsOpen)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student.Name)
+                @Html.DisplayNameFor(model => model.Student)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Assignment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsOpen)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.HelprequestId)
+                @Html.DisplayFor(modelItem => item.IsOpen)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.Name)
+                @Html.DisplayFor(modelItem => item.Student.StudentId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Assignment.AssignmentId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsOpen)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.HelprequestId">Edit</a> |
-                @*<a asp-action="Details" asp-route-id="@item.HelprequestId">Details</a> |*@
+                <a asp-action="Details" asp-route-id="@item.HelprequestId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.HelprequestId">Delete</a>
             </td>
         </tr>
-        }
+}
     </tbody>
 </table>
-
-
- 

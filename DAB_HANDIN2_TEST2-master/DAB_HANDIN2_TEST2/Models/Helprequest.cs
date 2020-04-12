@@ -12,6 +12,7 @@ namespace DAB2.models
         [Key]
         [Display(Name = "Helprequest ID")]
         public int HelprequestId { get; set; } //Key
+        public bool IsOpen { get; set; }
 
         // RELATIONS
         public int StudentId { get; set; }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAB2.data;
 using DAB2.models;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace DAB_HANDIN2_TEST2.Controllers
 {
@@ -44,14 +45,8 @@ namespace DAB_HANDIN2_TEST2.Controllers
                 return NotFound();
             }
 
-
-
-
             var student = _context.Students.Where(s => s.StudentId == id).FirstOrDefault();
             ViewData["name"] = student.Name.ToString();
-
-
-
 
             return View(helprequest);
         }
@@ -61,6 +56,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         {
             ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId");
             ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
+            ViewData["IsOpen"] = new SelectList(_context.Helprequests, "IsOpen", "IsOpen");
             return View();
         }
 
@@ -69,7 +65,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("HelprequestId,StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
+        public async Task<IActionResult> Create([Bind("HelprequestId,IsOpen,StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
         {
             //var helprequest2 = _context.Helprequests.Where(h => h.HelprequestId == helprequest.HelprequestId).FirstOrDefault();
             var student = _context.Students.Where(s => s.StudentId == helprequest.StudentId).FirstOrDefault();
@@ -90,6 +86,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
             ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId", helprequest.AssignmentId);
             ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", helprequest.StudentId);
             ViewData["HelprequestId"] = new SelectList(_context.Helprequests, "HelprequestId", "HelprequestId", helprequest.HelprequestId);
+            ViewData["IsOpen"] = new SelectList(_context.Helprequests, "IsOpen", "IsOpen", helprequest.IsOpen);
             return View(helprequest);
         }
 
@@ -117,9 +114,9 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("HelprequestId,StudentId,AssignmentId")] Helprequest helprequest)
+        public async Task<IActionResult> Edit(int id, [Bind("HelprequestId,IsOpen,StudentId,AssignmentId")] Helprequest helprequest)
         {
-            if (id != helprequest.AssignmentId)
+            if (id != helprequest.HelprequestId)
             {
                 return NotFound();
             }
@@ -186,6 +183,22 @@ namespace DAB_HANDIN2_TEST2.Controllers
         }
 
 
+
+        // GET: Helprequests statistik
+        public async Task<IActionResult> getOpenRequests()
+        {
+            var openRequests = _context.Helprequests.Where(hr => hr.IsOpen == true).ToList();
+            int count = 0;
+            foreach (var helprequest in openRequests)
+            {
+                count++;
+            }
+
+            ViewBag.OpenCounter = count;
+            return View(openRequests);
+        }
+
+
         // GET: find request by student name
         //public async Task<IActionResult> FindRequests(string name)
         //{
@@ -206,7 +219,7 @@ namespace DAB_HANDIN2_TEST2.Controllers
         //    ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId");
         //    ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
         //    return View();
-            //return View(helprequests);
+        //return View(helprequests);
         //}
     }
 }
