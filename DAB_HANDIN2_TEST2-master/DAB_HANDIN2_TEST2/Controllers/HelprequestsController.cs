@@ -23,7 +23,18 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // GET: Helprequests
         public async Task<IActionResult> Index()
         {
+            //var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
+            //return View(await dBcontext.ToListAsync());
+
+            var openRequests = _context.Helprequests.Where(hr => hr.IsOpen == true).ToList();
             var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
+            int count = 0;
+            foreach (var helprequest in openRequests)
+            {
+                count++;
+            }
+
+            ViewBag.OpenCounter = count;
             return View(await dBcontext.ToListAsync());
         }
 
