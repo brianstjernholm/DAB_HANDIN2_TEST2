@@ -58,10 +58,6 @@ namespace DAB_HANDIN2_TEST2
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapRazorPages();
-            //});
         }
     }
 }

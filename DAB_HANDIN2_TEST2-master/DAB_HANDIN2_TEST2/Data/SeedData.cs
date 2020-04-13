@@ -288,13 +288,47 @@ namespace DAB2.data
 
                 #endregion
 
-                //// creating helprequest
-                //Helprequest helprequest1 = new Helprequest()
-                //{
-                //    Student = student1,
-                //    Assignment = assignment1
-                //};
-                //context.Helprequests.Add(helprequest1);
+                //creating helprequest
+                Helprequest helprequest1 = new Helprequest()
+                {
+                    Student = student1,
+                    Assignment = assignment1,
+                    IsOpen = true
+                };
+
+                Helprequest helprequest2 = new Helprequest()
+                {
+                    Student = student2,
+                    Assignment = assignment1,
+                    IsOpen = true
+                };
+
+                Helprequest helprequest3 = new Helprequest()
+                {
+                    Student = student3,
+                    Assignment = assignment3,
+                    IsOpen = true
+                };
+
+                Helprequest helprequest4 = new Helprequest()
+                {
+                    Student = student4,
+                    Assignment = assignment2,
+                
+                };
+
+                Helprequest helprequest5 = new Helprequest()
+                {
+                    Student = student2,
+                    Assignment = assignment3,
+                    IsOpen = true
+                };
+
+                context.Helprequests.Add(helprequest1);
+                context.Helprequests.Add(helprequest2);
+                context.Helprequests.Add(helprequest3);
+                context.Helprequests.Add(helprequest4);
+                context.Helprequests.Add(helprequest5);
 
                 context.SaveChanges();
                 System.Console.WriteLine("Data saved");

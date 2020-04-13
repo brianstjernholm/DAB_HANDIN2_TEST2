@@ -23,9 +23,6 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // GET: Helprequests
         public async Task<IActionResult> Index()
         {
-            //var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
-            //return View(await dBcontext.ToListAsync());
-
             var openRequests = _context.Helprequests.Where(hr => hr.IsOpen == true).ToList();
             var dBcontext = _context.Helprequests.Include(h => h.Assignment).Include(h => h.Student);
             int count = 0;
@@ -76,18 +73,10 @@ namespace DAB_HANDIN2_TEST2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("HelprequestId,IsOpen,StudentId,AssignmentId")] Helprequest helprequest) //HelprequestId, // klippet som første param
+        public async Task<IActionResult> Create([Bind("HelprequestId,IsOpen,StudentId,AssignmentId")] Helprequest helprequest)
         {
-            //var helprequest2 = _context.Helprequests.Where(h => h.HelprequestId == helprequest.HelprequestId).FirstOrDefault();
             var student = _context.Students.Where(s => s.StudentId == helprequest.StudentId).FirstOrDefault();
             var assignment = _context.Assignments.Where(a => a.AssignmentId == helprequest.AssignmentId).FirstOrDefault();
-
-            //var request = new Helprequest()
-            //{
-            //    Student = student,
-            //    Assignment = assignment
-            //};
-
             if (ModelState.IsValid)
             {
                 _context.Update(helprequest);
@@ -102,8 +91,6 @@ namespace DAB_HANDIN2_TEST2.Controllers
             return View(helprequest);
         }
 
-
-
 //GET: Helprequests/Edit/5
 public async Task<IActionResult> Edit(int? id)
 
@@ -113,7 +100,6 @@ public async Task<IActionResult> Edit(int? id)
                 return NotFound();
             }
 
-            //var helprequest = await _context.Helprequests.FindAsync(id);
             var helprequest = _context.Helprequests.Where(h => h.HelprequestId == id).FirstOrDefault();
             if (helprequest == null)
             {
@@ -213,29 +199,5 @@ public async Task<IActionResult> Edit(int? id)
             ViewBag.OpenCounter = count;
             return View(await dBcontext.ToListAsync());
         }
-
-
-        // GET: find request by student name
-        //public async Task<IActionResult> FindRequests(string name)
-        //{
-        //    if (name == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var student = _context.Students.Where(s => s.Name == name).FirstOrDefault();
-
-        //    var helprequests = _context.Helprequests.Where(h => h.Student.Name == student.Name).ToList();
-
-        //    if (student == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    ViewData["AssignmentId"] = new SelectList(_context.Assignments, "AssignmentId", "AssignmentId");
-        //    ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
-        //    return View();
-        //return View(helprequests);
-        //}
     }
 }

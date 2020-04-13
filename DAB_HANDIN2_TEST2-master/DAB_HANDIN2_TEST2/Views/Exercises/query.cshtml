@@ -9,20 +9,15 @@
 
 <h1>query</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.HelpWhere)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Teacher.TeacherId)
-            </th>*@
+
             <th>
-                @*@Html.DisplayNameFor(model => model.Student.Name)*@
+                
                 @Html.DisplayNameFor(model => model.Student.Name)
             </th>
             <th>
@@ -37,32 +32,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HelpWhere)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Teacher.TeacherId)
-            </td>*@
+
             <td>
-                @*@foreach (var id in ViewBag.Students)
-                {
-                    if (item.StudentId == id.StudentId)
-                    {
-                        item.Student.Name = id.Name;
-                        @Html.DisplayFor(modelItem => item.Student.Name)
-                    }
-                }
-                <text>@item.Student.Name</text>*@
+
                 @Html.DisplayFor(modelItem => item.Student.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CourseId)
             </td>
-            @*<td>
-                @ViewData["list"];
-            </td>*@
-            @*<td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>*@
+
         </tr>
 }
     </tbody>

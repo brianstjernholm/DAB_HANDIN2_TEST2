@@ -10,10 +10,7 @@ namespace DAB2.data
 {
     public class DBcontext : DbContext
     {
-        //public DBcontext()
-        //{
-        //}
-
+  
         public DBcontext(DbContextOptions<DBcontext> options)
             : base(options)
         {
